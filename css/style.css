@@ -423,6 +423,16 @@ h3.my-profession{
     margin-left: 4px;
     display: inline-block;
 }
+.about .about-content .personal-info .info-item p span a{
+    color: var(--skin-color);
+    font-weight: 500;
+}
+.about .about-content .personal-info .info-item p span a:visited{
+    color: var(--skin-color);
+}
+.about .about-content .personal-info .info-item p span a:hover{
+    text-decoration: underline;
+}
 .about .about-content .personal-info .buttons{
     margin-top: 30px;
 }
@@ -628,9 +638,30 @@ h3.my-profession{
     color: var(--text-black-900);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 } 
+.portfolio .portfolio-item-inner .portfolio-img{
+    height: 220px;
+    overflow: hidden;
+}
 .portfolio .portfolio-item-inner .portfolio-img img{
     width: 100%;
+    height: 100%;
     display: block;
+    object-fit: cover;
+}
+.portfolio .portfolio-item-inner .portfolio-img.portfolio-placeholder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 220px;
+    background: linear-gradient(135deg, var(--bg-black-900), var(--skin-color));
+    transition: all 0.3s ease;
+}
+.portfolio .portfolio-item-inner:hover .portfolio-img.portfolio-placeholder{
+    filter: brightness(1.1);
+}
+.portfolio .portfolio-item-inner .portfolio-img.portfolio-placeholder i{
+    font-size: 60px;
+    color: #ffffff;
 }
 /* Contact */
 .contact-title{
