@@ -73,6 +73,14 @@ document.querySelector(".whisperwave").addEventListener("click", function() {
     addBackSection(sectionIndex);
 })
 
+document.querySelector(".worktracker").addEventListener("click", function() {
+    const sectionIndex = this.getAttribute("data-section-index");
+    showSection(this);
+    updateNav(this);
+    removeBackSection();
+    addBackSection(sectionIndex);
+})
+
 const navTogglerBtn = document.querySelector(".nav-toggler"),
       aside = document.querySelector(".aside");
 

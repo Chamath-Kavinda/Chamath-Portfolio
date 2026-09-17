@@ -683,6 +683,14 @@ h3.my-profession{
     display: block;
     object-fit: cover;
 }
+/* WorkTracker's logo is a full-bleed square icon, so "cover" crops it top/bottom.
+   Show it in full instead, centered on a matching dark backdrop. */
+.portfolio a.worktracker .portfolio-item-inner .portfolio-img img{
+    object-fit: contain;
+    box-sizing: border-box;
+    padding: 30px;
+    background: linear-gradient(135deg, var(--bg-black-900), #1b1b2f);
+}
 .portfolio .portfolio-item-inner .portfolio-img.portfolio-placeholder{
     display: flex;
     align-items: center;
@@ -826,11 +834,108 @@ h3.my-profession{
     margin-top: 100px;
 }
 
+/* Single-column stacked layout, matching the WhisperWave section:
+   centered logo up top, full-width paragraph below, buttons at the end. */
+.worktracker .sub-title{
+    color: var(--text-black-900);
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    /* left-aligned like WhisperWave's sub-title */
+}
+.worktracker .textarea{
+    color: var(--text-black-900);
+    font-size: 18px;
+    line-height: 1.7;
+    margin-left: 0;
+    text-align: left;
+}
+.worktracker .worktracker-logo-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.worktracker .worktracker-logo{
+    width: 200px;
+}
+.worktracker .feature-list{
+    margin: 0 0 25px 0;
+    padding: 0 15px;
+    color: var(--text-black-700);
+    font-size: 16px;
+    line-height: 1.6;
+}
+.worktracker .feature-list li{
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 12px;
+}
+.worktracker .feature-list li:last-child{
+    margin-bottom: 0;
+}
+.worktracker .feature-list li::before{
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    font-size: 13px;
+    color: var(--skin-color);
+}
+
+/* Buttons: a proper flex row that wraps cleanly, with centered
+   icon + label text and a clear primary / secondary distinction */
+.worktracker .worktracker-btns{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+.worktracker .btn-download{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 50px;
+    background-color: var(--skin-color);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 40px;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.worktracker .btn-download:hover{
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+.worktracker .btn-download:active{
+    transform: scale(0.97);
+}
+.worktracker .btn-download:focus-visible{
+    outline: 2px solid var(--skin-color);
+    outline-offset: 3px;
+}
+
 
 /* Ensure that the columns are responsive */
 @media (max-width: 768px) {
     .whisperwave .col-md-6 {
         width: 100%;
+    }
+    .worktracker-columns .worktracker-media,
+    .worktracker-columns .worktracker-body{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .worktracker .btn-download{
+        width: 100%;
+        min-width: unset;
     }
 }
 
