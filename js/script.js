@@ -55,12 +55,14 @@ function updateNav(element) {
         }
     }
 }
-document.querySelector(".hire-me").addEventListener("click", function() {
-    const sectionIndex = this.getAttribute("data-section-index");
-    showSection(this);
-    updateNav(this);
-    removeBackSection();
-    addBackSection(sectionIndex);
+document.querySelectorAll(".hire-me").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+        const sectionIndex = this.getAttribute("data-section-index");
+        showSection(this);
+        updateNav(this);
+        removeBackSection();
+        addBackSection(sectionIndex);
+    })
 })
 
 document.querySelector(".whisperwave").addEventListener("click", function() {
@@ -84,3 +86,33 @@ function asideSectionTogglerBtn() {
         allSection[i].classList.toggle("open");
     }
 }
+
+/* ====== Profile Picture Crossfade (1 min loop) ====== */
+(function () {
+    const profilePics = ["./images/ProfilePic1.png", "./images/ProfilePic2.png"];
+    const heroImgs = [
+        document.getElementById("hero-img"),
+        document.getElementById("hero-img-mobile")
+    ].filter(Boolean);
+
+    if (heroImgs.length === 0) return;
+
+    let picIndex = 0;
+    const SWITCH_INTERVAL = 30000; // 30s per image => 60s full loop
+    const FADE_DURATION = 600;     // matches CSS opacity transition (0.6s)
+
+    setInterval(function () {
+        picIndex = (picIndex + 1) % profilePics.length;
+
+        heroImgs.forEach(img => {
+            img.style.opacity = 0;
+        });
+
+        setTimeout(function () {
+            heroImgs.forEach(img => {
+                img.src = profilePics[picIndex];
+                img.style.opacity = 1;
+            });
+        }, FADE_DURATION);
+    }, SWITCH_INTERVAL);
+})();
